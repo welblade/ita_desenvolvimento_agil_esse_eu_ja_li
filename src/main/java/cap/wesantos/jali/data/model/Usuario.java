@@ -28,7 +28,7 @@ public class Usuario {
     private String senha;
 
     @Column
-    private Long pontos;
+    private Long pontos = 0L;
 
     @OneToMany(mappedBy = "usuario")
     private Set<LivroUsuario> livros = new HashSet<>();
