@@ -15,7 +15,8 @@ public class Livro {
     @Column
     private int paginas;
 
-    @OneToOne(mappedBy = "categoria_id", fetch = FetchType.EAGER)
+    @OneToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "categoria_id")
     private Categoria categoria;
 
     public Long getId() {
