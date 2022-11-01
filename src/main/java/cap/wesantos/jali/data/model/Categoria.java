@@ -1,7 +1,14 @@
 package cap.wesantos.jali.data.model;
 
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
 import javax.persistence.*;
 
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
 @Entity
 @Table(name = "categoria")
 public class Categoria {
@@ -12,22 +19,4 @@ public class Categoria {
 
     @Column
     private String nome;
-
-    public Long getId() {
-        return id;
-    }
-
-    public Categoria setId(Long id) {
-        this.id = id;
-        return this;
-    }
-
-    public String getNome() {
-        return nome;
-    }
-
-    public Categoria setNome(String nome) {
-        this.nome = nome;
-        return this;
-    }
 }

@@ -1,7 +1,14 @@
 package cap.wesantos.jali.data.model;
 
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
 import javax.persistence.*;
 
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
 @Entity
 @Table(name = "livro_usuario")
 public class LivroUsuario {
@@ -20,40 +27,4 @@ public class LivroUsuario {
 
     @Column
     private boolean isLido;
-
-    public Long getId() {
-        return id;
-    }
-
-    public LivroUsuario setId(Long id) {
-        this.id = id;
-        return this;
-    }
-
-    public Livro getLivro() {
-        return livro;
-    }
-
-    public LivroUsuario setLivro(Livro livro) {
-        this.livro = livro;
-        return this;
-    }
-
-    public Usuario getUsuario() {
-        return usuario;
-    }
-
-    public LivroUsuario setUsuario(Usuario usuario) {
-        this.usuario = usuario;
-        return this;
-    }
-
-    public boolean isLido() {
-        return isLido;
-    }
-
-    public LivroUsuario setLido(boolean lido) {
-        isLido = lido;
-        return this;
-    }
 }
