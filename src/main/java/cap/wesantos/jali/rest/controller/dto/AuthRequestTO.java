@@ -5,14 +5,13 @@ import lombok.*;
 
 import javax.validation.constraints.NotEmpty;
 
-@Getter
-@Setter
+@Data
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
 public class AuthRequestTO {
     @NotEmpty
-    private String nomeUsuario;
+    private String login;
     @NotEmpty
     private String senha;
 }

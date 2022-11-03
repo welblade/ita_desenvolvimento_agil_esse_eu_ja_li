@@ -2,8 +2,7 @@ package cap.wesantos.jali.rest.controller.dto;
 
 import lombok.*;
 
-@Getter
-@Setter
+@Data
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
