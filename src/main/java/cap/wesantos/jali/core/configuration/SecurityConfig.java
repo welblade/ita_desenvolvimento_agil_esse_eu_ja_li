@@ -43,20 +43,13 @@ public class SecurityConfig {
     }
 
     @Bean
-    public AuthenticationManager jwtAuthenticationManager(HttpSecurity http) throws Exception {
-        AuthenticationManagerBuilder auth = http.getSharedObject(AuthenticationManagerBuilder.class);
-        return auth
-                .userDetailsService(userService)
-                .passwordEncoder(passwordEncoder()).and().build();
-    }
-
-
-    @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         http
                 .csrf().disable()
                 .authorizeHttpRequests((authorize) -> authorize
                         .antMatchers(AUTH_WHITELIST).permitAll()
+                        .antMatchers("/api/usuarios/**")
+                        .hasAnyRole("USER", "ADMIN")
                         .anyRequest().authenticated()
                 )
                 .sessionManagement()
