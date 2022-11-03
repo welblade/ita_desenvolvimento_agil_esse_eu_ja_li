@@ -56,6 +56,7 @@ public class JwtService {
             return false;
         }
     }
+
     private Claims obterClaims(String token) throws ExpiredJwtException {
         return Jwts.parserBuilder()
                 .setSigningKey(assinatura)
@@ -63,6 +64,4 @@ public class JwtService {
                 .parseClaimsJws(token)
                 .getBody();
     }
-
-
 }
