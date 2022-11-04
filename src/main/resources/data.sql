@@ -1,4 +1,4 @@
-INSERT INTO usuario (nome, login, senha) VALUES('Fulano', 'fulano', '$2a$10$6.aE5t3q4.RfwSHzm1nFDe4CeSVzkHbV7lpY3NKF6mW9SYFjZpp4O');
+INSERT INTO usuario (nome, login, senha, funcao) VALUES('Fulano', 'fulano', '$2a$10$6.aE5t3q4.RfwSHzm1nFDe4CeSVzkHbV7lpY3NKF6mW9SYFjZpp4O', 'USER');
 
 INSERT INTO categoria (id, nome) VALUES(1, 'Aventura');
 INSERT INTO categoria (id, nome) VALUES(2, 'Ciência');

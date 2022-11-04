@@ -1,5 +1,6 @@
 package cap.wesantos.jali.data.model;
 
+import cap.wesantos.jali.data.enumeration.Funcao;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -26,6 +27,10 @@ public class Usuario {
 
     @Column
     private String senha;
+
+    @Column
+    @Enumerated(EnumType.STRING)
+    private Funcao funcao = Funcao.USER;
 
     @Column
     private Long pontos = 0L;
