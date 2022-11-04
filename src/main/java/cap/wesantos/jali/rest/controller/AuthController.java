@@ -21,7 +21,7 @@ public class AuthController {
     private AuthService service;
 
     @PostMapping
-    public AuthResponseTO login(@RequestBody AuthRequestTO authRequest) {
+    public AuthResponseTO logar(@RequestBody AuthRequestTO authRequest) {
         try {
             return service.autenticar(authRequest);
         } catch (UsernameNotFoundException | SenhaInvalidaException ex) {
