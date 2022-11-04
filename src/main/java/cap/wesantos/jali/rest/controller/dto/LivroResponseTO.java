@@ -17,4 +17,6 @@ public class LivroResponseTO {
     private int paginas;
 
     private String categoria;
+
+    private boolean isLido;
 }

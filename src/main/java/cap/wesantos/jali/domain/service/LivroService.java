@@ -6,4 +6,6 @@ import java.util.List;
 
 public interface LivroService {
     List<LivroResponseTO> listarLivros();
+
+    LivroResponseTO obterPorId(Long id);
 }

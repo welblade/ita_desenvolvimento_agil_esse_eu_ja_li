@@ -11,5 +11,6 @@ public interface LivroMapper {
     LivroMapper CONVERT = Mappers.getMapper(LivroMapper.class);
 
     @Mapping(target = "categoria", source = "categoria.nome")
+    @Mapping(target = "isLido", ignore = true)
     LivroResponseTO toResponseDTO(Livro livro);
 }
