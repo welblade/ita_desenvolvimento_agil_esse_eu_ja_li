@@ -16,6 +16,7 @@ import static org.springframework.http.HttpStatus.*;
 
 @RestControllerAdvice
 public class ApiControllerAdvisor {
+    // TODO: tratar ExpiredJwtException
     @ExceptionHandler(MethodArgumentNotValidException.class)
     @ResponseStatus(BAD_REQUEST)
     public ApiErrors methodArgumentNotValidExceptionHandler(MethodArgumentNotValidException exception) {

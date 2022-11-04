@@ -1,6 +1,7 @@
 package cap.wesantos.jali.domain.service;
 
 import cap.wesantos.jali.core.exception.LivroNaoEncontradoException;
+import cap.wesantos.jali.core.security.JwtService;
 import cap.wesantos.jali.data.repository.LivroRepository;
 import cap.wesantos.jali.domain.mapper.LivroMapper;
 import cap.wesantos.jali.rest.controller.dto.LivroResponseTO;
@@ -16,17 +17,30 @@ public class LivroServiceImpl implements LivroService {
     @Autowired
     LivroRepository repository;
 
+    @Autowired
+    JwtService jwtService;
+
     @Override
-    public List<LivroResponseTO> listarLivros() {
-        return repository.findAll().stream()
+    public List<LivroResponseTO> listarLivros(String authorization) {
+        String loginUsuario = extrairLoginDaAuthorization(authorization);
+
+        return repository.listarLivrosEIndicarSeLidoPeloUsuario(loginUsuario)
+                .stream()
                 .map(LivroMapper.CONVERT::toResponseDTO)
-                .collect(Collectors.toList());
+                .collect(Collectors.toList())
+        ;
     }
 
     @Override
-    public LivroResponseTO obterPorId(Long id) {
-        return repository.findById(id)
+    public LivroResponseTO obterPorId(Long id, String authorization) {
+        String loginUsuario = extrairLoginDaAuthorization(authorization);
+        return repository.encontrarLivroPorIdEIndicarSeLidoPeloUsuario(id, loginUsuario)
                 .map(LivroMapper.CONVERT::toResponseDTO)
                 .orElseThrow(LivroNaoEncontradoException::new);
+    }
+
+    private String extrairLoginDaAuthorization(String authorization) {
+        String token = authorization.split(" ")[1];
+        return jwtService.obterLoginUsuario(token);
     }
 }

@@ -5,7 +5,7 @@ import cap.wesantos.jali.rest.controller.dto.LivroResponseTO;
 import java.util.List;
 
 public interface LivroService {
-    List<LivroResponseTO> listarLivros();
+    List<LivroResponseTO> listarLivros(String authorization);
 
-    LivroResponseTO obterPorId(Long id);
+    LivroResponseTO obterPorId(Long id, String authorization);
 }

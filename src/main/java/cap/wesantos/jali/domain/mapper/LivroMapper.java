@@ -1,6 +1,7 @@
 package cap.wesantos.jali.domain.mapper;
 
 import cap.wesantos.jali.data.model.Livro;
+import cap.wesantos.jali.data.projection.LivroView;
 import cap.wesantos.jali.rest.controller.dto.LivroResponseTO;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
@@ -13,4 +14,7 @@ public interface LivroMapper {
     @Mapping(target = "categoria", source = "categoria.nome")
     @Mapping(target = "isLido", ignore = true)
     LivroResponseTO toResponseDTO(Livro livro);
+
+    @Mapping(target = "isLido", source = "lido")
+    LivroResponseTO toResponseDTO(LivroView livro);
 }
