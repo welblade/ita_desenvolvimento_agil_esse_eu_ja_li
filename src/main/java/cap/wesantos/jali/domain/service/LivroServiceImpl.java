@@ -4,10 +4,12 @@ import cap.wesantos.jali.data.repository.LivroRepository;
 import cap.wesantos.jali.domain.mapper.LivroMapper;
 import cap.wesantos.jali.rest.controller.dto.LivroResponseTO;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.stream.Collectors;
 
+@Service
 public class LivroServiceImpl implements LivroService {
 
     @Autowired
