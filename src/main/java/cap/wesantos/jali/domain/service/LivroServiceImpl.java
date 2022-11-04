@@ -1,5 +1,6 @@
 package cap.wesantos.jali.domain.service;
 
+import cap.wesantos.jali.core.exception.LivroNaoEncontradoException;
 import cap.wesantos.jali.data.repository.LivroRepository;
 import cap.wesantos.jali.domain.mapper.LivroMapper;
 import cap.wesantos.jali.rest.controller.dto.LivroResponseTO;
@@ -20,5 +21,12 @@ public class LivroServiceImpl implements LivroService {
         return repository.findAll().stream()
                 .map(LivroMapper.CONVERT::toResponseDTO)
                 .collect(Collectors.toList());
+    }
+
+    @Override
+    public LivroResponseTO obterPorId(Long id) {
+        return repository.findById(id)
+                .map(LivroMapper.CONVERT::toResponseDTO)
+                .orElseThrow(LivroNaoEncontradoException::new);
     }
 }
