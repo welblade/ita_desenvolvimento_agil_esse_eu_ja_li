@@ -35,8 +35,8 @@ INSERT INTO livro (id, nome, paginas, categoria_id) VALUES(19, 'O lado feio do a
 INSERT INTO livro (id, nome, paginas, categoria_id) VALUES(20, 'É Assim que Acaba', 368, 8);
 INSERT INTO livro (id, nome, paginas, categoria_id) VALUES(21, 'É Assim que Começa', 368, 8);
 
-INSERT INTO livro_usuario (id, usuario_id, livro_id) VALUES(1, 1, 1);
-INSERT INTO livro_usuario (id, usuario_id, livro_id) VALUES(2, 1, 2);
-INSERT INTO livro_usuario (id, usuario_id, livro_id) VALUES(3, 1, 3);
-INSERT INTO livro_usuario (id, usuario_id, livro_id) VALUES(4, 1, 4);
-INSERT INTO livro_usuario (id, usuario_id, livro_id) VALUES(5, 1, 5);
+INSERT INTO livro_usuario (usuario_id, livro_id) VALUES(1, 1);
+INSERT INTO livro_usuario (usuario_id, livro_id) VALUES(1, 2);
+INSERT INTO livro_usuario (usuario_id, livro_id) VALUES(1, 3);
+INSERT INTO livro_usuario (usuario_id, livro_id) VALUES(1, 4);
+INSERT INTO livro_usuario (usuario_id, livro_id) VALUES(1, 5);

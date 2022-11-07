@@ -11,20 +11,16 @@ import javax.persistence.*;
 @AllArgsConstructor
 @Entity
 @Table(name = "livro_usuario")
+@IdClass(LivroUsuarioId.class)
 public class LivroUsuario {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
-
     @ManyToOne
-    @JoinColumn(name = "livro_id", referencedColumnName = "id")
+    @JoinColumn(name = "livro_id", referencedColumnName = "id", nullable = false)
     private Livro livro;
 
+    @Id
     @ManyToOne
-    @JoinColumn(name = "usuario_id", referencedColumnName = "id")
+    @JoinColumn(name = "usuario_id", referencedColumnName = "id", nullable = false)
     private Usuario usuario;
-
-    @Column
-    private boolean isLido;
 }
