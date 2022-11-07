@@ -1,6 +1,7 @@
 package cap.wesantos.jali.rest.controller;
 
 import cap.wesantos.jali.domain.service.LivroService;
+import cap.wesantos.jali.rest.controller.dto.HeaderAuthorizationRequestTO;
 import cap.wesantos.jali.rest.controller.dto.LivroResponseTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -19,7 +20,7 @@ public class LivrosController {
     @GetMapping
     @ResponseBody
     public List<LivroResponseTO> listar(
-            @RequestHeader(value = AUTHORIZATION) String authorization
+            @RequestHeader(value = AUTHORIZATION) HeaderAuthorizationRequestTO authorization
     ) {
         return service.listarLivros(authorization);
     }
@@ -28,7 +29,7 @@ public class LivrosController {
     @ResponseBody
     public LivroResponseTO detalhar(
             @PathVariable("id") Long id,
-            @RequestHeader(value = AUTHORIZATION) String authorization
+            @RequestHeader(value = AUTHORIZATION) HeaderAuthorizationRequestTO authorization
             ) {
         return service.obterPorId(id, authorization);
     }
