@@ -1,18 +1,21 @@
 package cap.wesantos.jali.rest.controller;
 
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.bind.annotation.RestController;
+import cap.wesantos.jali.domain.service.UsuarioService;
+import cap.wesantos.jali.rest.controller.dto.UsuarioResponseTO;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/api/usuarios")
 public class UsuariosController {
 
-    @GetMapping
+    @Autowired
+    private UsuarioService service;
+
+    @GetMapping("{id}")
     @ResponseBody
-    public String get() {
-        return "Meu teste";
+    public UsuarioResponseTO obterInformacoes(@PathVariable("id") Long usuarioId) {
+        return service.obterUsuarioPorId(usuarioId);
     }
 
 }

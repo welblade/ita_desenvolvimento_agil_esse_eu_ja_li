@@ -25,4 +25,9 @@ public class LivroLido {
     @MapsId("livroId")
     @JoinColumn(name = "livro_id")
     private Livro livro;
+
+    public LivroLido(Usuario usuario, Livro livro) {
+        this.usuario = usuario;
+        this.livro = livro;
+    }
 }

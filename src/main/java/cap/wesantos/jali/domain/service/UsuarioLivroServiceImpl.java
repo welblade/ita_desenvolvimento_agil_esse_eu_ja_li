@@ -22,6 +22,9 @@ import javax.persistence.EntityExistsException;
 
 @Service
 public class UsuarioLivroServiceImpl implements UsuarioLivroService {
+    private final int PONTO_POR_LIVRO = 1;
+    private final int PONTO_BONUS_DE_PAGINAS = 1;
+    private final int QUANTIDADE_PAGINAS_BONUS = 100;
 
     @Autowired
     JwtService jwtService;
@@ -43,11 +46,15 @@ public class UsuarioLivroServiceImpl implements UsuarioLivroService {
         Livro livro = livroRepository.findById(livroId)
                 .orElseThrow(LivroNaoEncontradoException::new);
 
-        LivroLido livroLido = new LivroLido();
-        livroLido.setUsuario(usuario);
-        livroLido.setLivro(livro);
+        var pontosTotais = calcularPontosDoUsuario(usuario) + calcularPontosDoLivro(livro);
+        usuario.setPontos(pontosTotais);
+
+        LivroLido livroLido = new LivroLido(usuario, livro);
+
         try {
             repository.save(livroLido);
+            usuario.getLivros().add(livroLido);
+            usuarioRepository.save(usuario);
         }catch (EntityExistsException | DataIntegrityViolationException e) {
             throw new LivroJaMarcadoComoLidoException();
         }
@@ -60,7 +67,14 @@ public class UsuarioLivroServiceImpl implements UsuarioLivroService {
         Livro livro = livroRepository.findById(livroId)
                 .orElseThrow(LivroNaoEncontradoException::new);
 
+        var pontosTotais = calcularPontosDoUsuario(usuario) - calcularPontosDoLivro(livro);
+        usuario.setPontos(pontosTotais);
+
+        LivroLido livroLido = new LivroLido(usuario, livro);
+
         try {
+            usuario.getLivros().remove(livroLido);
+            usuarioRepository.save(usuario);
             repository.deleteById(new LivroLidoPk(usuario.getId(), livro.getId()));
         } catch (EmptyResultDataAccessException e) {
             throw new LivroNaoMarcadoComoLidoException();
@@ -71,5 +85,20 @@ public class UsuarioLivroServiceImpl implements UsuarioLivroService {
         String login = jwtService.obterLoginUsuario(authorization.getAuthorization());
         return usuarioRepository.findByLogin(login)
                 .orElseThrow(() -> new UsernameNotFoundException("Usuário não autenticado."));
+    }
+
+    private long calcularPontosDoUsuario(Usuario usuario) {
+        return usuario.getLivros()
+                .stream()
+                .reduce(0L,
+                        (total, livroLido2) -> total + calcularPontosDoLivro(livroLido2.getLivro()),
+                        Long::sum
+                );
+    }
+
+    private long calcularPontosDoLivro(Livro livro) {
+        var qtdPaginas = livro.getPaginas();
+        var bonus = qtdPaginas / QUANTIDADE_PAGINAS_BONUS * PONTO_BONUS_DE_PAGINAS;
+        return PONTO_POR_LIVRO + bonus;
     }
 }

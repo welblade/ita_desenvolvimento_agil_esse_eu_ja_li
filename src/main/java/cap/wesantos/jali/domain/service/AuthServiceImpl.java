@@ -12,7 +12,7 @@ import org.springframework.stereotype.Service;
 @Service
 public class AuthServiceImpl implements AuthService {
     @Autowired
-    private UsuarioService usuarioService;
+    private UsuarioServiceImpl usuarioServiceImpl;
 
     @Autowired
     private JwtService jwtService;
@@ -21,7 +21,7 @@ public class AuthServiceImpl implements AuthService {
     private PasswordEncoder encoder;
 
     public AuthResponseTO autenticar(AuthRequestTO authRequest) {
-        UserDetails details = usuarioService.loadUserByUsername(authRequest.getLogin());
+        UserDetails details = usuarioServiceImpl.loadUserByUsername(authRequest.getLogin());
 
         if (encoder.matches(authRequest.getSenha(), details.getPassword())) {
             String token = jwtService.gerarToken(details.getUsername());
