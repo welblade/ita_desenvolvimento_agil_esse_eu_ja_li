@@ -1,14 +1,16 @@
 package cap.wesantos.jali.data.model;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import javax.persistence.*;
+import java.util.Set;
 
-@Data
-@AllArgsConstructor
 @NoArgsConstructor
+@AllArgsConstructor
+@EqualsAndHashCode
+@ToString
+@Getter
+@Setter
 @Entity
 @Table(name = "livro")
 public class Livro {
@@ -21,9 +23,10 @@ public class Livro {
     private String nome;
 
     @Column
-    private int paginas;
+    private Integer paginas;
 
     @OneToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "categoria_id")
     private Categoria categoria;
+
 }

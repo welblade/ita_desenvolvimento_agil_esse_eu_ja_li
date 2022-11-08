@@ -1,17 +1,19 @@
 package cap.wesantos.jali.data.model;
 
 import cap.wesantos.jali.data.enumeration.Funcao;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import javax.persistence.*;
 import java.util.HashSet;
 import java.util.Set;
 
-@Data
+
 @NoArgsConstructor
 @AllArgsConstructor
+@EqualsAndHashCode(exclude = {"livros", "trofeus"})
+@ToString
+@Getter
+@Setter
 @Entity
 @Table(name = "usuario")
 public class Usuario {
@@ -36,8 +38,10 @@ public class Usuario {
     private Long pontos = 0L;
 
     @OneToMany(mappedBy = "usuario")
-    private Set<LivroUsuario> livros = new HashSet<>();
+    private Set<LivroLido> livros = new HashSet<>();
 
     @OneToMany(mappedBy = "usuario")
     private Set<Trofeu> trofeus = new HashSet<>();
+
+
 }
