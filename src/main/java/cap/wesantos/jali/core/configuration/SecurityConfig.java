@@ -42,7 +42,7 @@ public class SecurityConfig {
                         .antMatchers(AUTH_WHITELIST).permitAll()
                         .antMatchers("/api/usuarios/**")
                         .hasAnyRole("USER", "ADMIN")
-                        .antMatchers("/api/usuarios-livros/**")
+                        .antMatchers("/api/usuarios/livros/**")
                         .hasAnyRole("USER", "ADMIN")
                         .antMatchers("/api/livros/**")
                         .hasAnyRole("USER", "ADMIN")

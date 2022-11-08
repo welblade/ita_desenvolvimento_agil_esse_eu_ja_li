@@ -12,7 +12,7 @@ import java.util.List;
 import static org.springframework.http.HttpHeaders.AUTHORIZATION;
 
 @RestController
-@RequestMapping("/api/usuarios-livros")
+@RequestMapping("/api/usuarios/livros")
 public class UsuariosLivrosController {
     @Autowired
     private UsuarioLivroService service;
