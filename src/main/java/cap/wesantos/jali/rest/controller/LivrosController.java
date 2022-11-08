@@ -19,7 +19,7 @@ public class LivrosController {
 
     @GetMapping
     @ResponseBody
-    public List<LivroResponseTO> listar(
+    public List<LivroResponseTO> listarTodos (
             @RequestHeader(value = AUTHORIZATION) HeaderAuthorizationRequestTO authorization
     ) {
         return service.listarLivros(authorization);
@@ -27,7 +27,7 @@ public class LivrosController {
 
     @GetMapping("{id}")
     @ResponseBody
-    public LivroResponseTO detalhar(
+    public LivroResponseTO obterDetalhes (
             @PathVariable("id") Long id,
             @RequestHeader(value = AUTHORIZATION) HeaderAuthorizationRequestTO authorization
             ) {
