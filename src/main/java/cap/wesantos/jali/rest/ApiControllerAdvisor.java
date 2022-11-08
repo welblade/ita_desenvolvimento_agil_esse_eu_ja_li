@@ -1,8 +1,10 @@
 package cap.wesantos.jali.rest;
 
+import cap.wesantos.jali.core.exception.LivroJaMarcadoComoLidoException;
 import cap.wesantos.jali.core.exception.LivroNaoEncontradoException;
 import cap.wesantos.jali.core.exception.SenhaInvalidaException;
 import org.springframework.context.support.DefaultMessageSourceResolvable;
+import org.springframework.http.HttpStatus;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
@@ -29,19 +31,25 @@ public class ApiControllerAdvisor {
 
     @ExceptionHandler(SenhaInvalidaException.class)
     @ResponseStatus(UNAUTHORIZED)
-    public ApiErrors SenhaInvalidaExceptionHandler(SenhaInvalidaException exception) {
+    public ApiErrors senhaInvalidaExceptionHandler(SenhaInvalidaException exception) {
         return new ApiErrors(exception.getMessage());
     }
 
     @ExceptionHandler(UsernameNotFoundException.class)
     @ResponseStatus(UNAUTHORIZED)
-    public ApiErrors UsernameNotFoundExceptionHandler(UsernameNotFoundException exception) {
+    public ApiErrors usernameNotFoundExceptionHandler(UsernameNotFoundException exception) {
         return new ApiErrors(exception.getMessage());
     }
 
     @ExceptionHandler(LivroNaoEncontradoException.class)
     @ResponseStatus(NOT_FOUND)
-    public ApiErrors LivroNaoEncontradoExceptionHandler(LivroNaoEncontradoException exception) {
+    public ApiErrors livroNaoEncontradoExceptionHandler(LivroNaoEncontradoException exception) {
+        return new ApiErrors(exception.getMessage());
+    }
+
+    @ExceptionHandler(LivroJaMarcadoComoLidoException.class)
+    @ResponseStatus(CONFLICT)
+    public ApiErrors livroJaMarcadoComoLidoExceptionHandler(LivroJaMarcadoComoLidoException exception) {
         return new ApiErrors(exception.getMessage());
     }
 }
