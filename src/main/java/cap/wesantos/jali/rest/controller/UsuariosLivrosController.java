@@ -23,13 +23,20 @@ public class UsuariosLivrosController {
 
     @PostMapping("{id}")
     @ResponseStatus(HttpStatus.CREATED)
-    @ResponseBody
-    public String marcarLivroLido(
-            @PathVariable Long id,
+    public void marcarLivroLido(
+            @PathVariable("id") Long livroId,
             @RequestHeader(value = AUTHORIZATION) HeaderAuthorizationRequestTO authorization
     ) {
-        service.gravarLivroLido(id, authorization);
-        return "ok";
+        service.gravarLivroLido(livroId, authorization);
+    }
+
+    @DeleteMapping("{id}")
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    public void desmarcarLivroLido(
+            @PathVariable("id") Long livroId,
+            @RequestHeader(value = AUTHORIZATION) HeaderAuthorizationRequestTO authorization
+    ) {
+        service.deletarLivroLido(livroId, authorization);
     }
 
 }
