@@ -3,7 +3,6 @@ package cap.wesantos.jali.data.model;
 import lombok.*;
 
 import javax.persistence.*;
-import java.util.Set;
 
 @NoArgsConstructor
 @AllArgsConstructor

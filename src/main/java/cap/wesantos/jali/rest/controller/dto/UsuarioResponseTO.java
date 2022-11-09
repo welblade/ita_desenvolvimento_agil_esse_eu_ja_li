@@ -17,8 +17,6 @@ public class UsuarioResponseTO {
 
     private String login;
 
-    private String senha;
-
     private Funcao funcao;
 
     private Long pontos;

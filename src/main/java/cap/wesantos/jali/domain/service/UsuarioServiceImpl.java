@@ -5,11 +5,15 @@ import cap.wesantos.jali.data.repository.UsuarioRepository;
 import cap.wesantos.jali.domain.mapper.UsuarioMapper;
 import cap.wesantos.jali.rest.controller.dto.UsuarioResponseTO;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Sort;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 public class UsuarioServiceImpl implements UserDetailsService, UsuarioService {
@@ -36,5 +40,13 @@ public class UsuarioServiceImpl implements UserDetailsService, UsuarioService {
     public UsuarioResponseTO obterUsuarioPorId(Long usuarioId) {
         return repository.findById(usuarioId).map(UsuarioMapper.CONVERT::toResponseTO)
                 .orElseThrow();
+    }
+
+    @Override
+    public List<UsuarioResponseTO> obterRankingLeitura() {
+        return repository.findAll(Sort.by("pontos").descending())
+                .stream()
+                .map(UsuarioMapper.CONVERT::toResponseTO)
+                .collect(Collectors.toList());
     }
 }

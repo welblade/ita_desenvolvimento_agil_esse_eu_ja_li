@@ -1,4 +1,6 @@
-INSERT INTO usuario (nome, login, senha, funcao) VALUES('Fulano', 'fulano', '$2a$10$6.aE5t3q4.RfwSHzm1nFDe4CeSVzkHbV7lpY3NKF6mW9SYFjZpp4O', 'USER');
+INSERT INTO usuario (nome, login, senha, funcao, pontos) VALUES('Fulano', 'fulano', '$2a$10$6.aE5t3q4.RfwSHzm1nFDe4CeSVzkHbV7lpY3NKF6mW9SYFjZpp4O', 'USER', 6);
+INSERT INTO usuario (nome, login, senha, funcao, pontos) VALUES('Alguém', 'alguem', '$2a$10$6.aE5t3q4.RfwSHzm1nFDe4CeSVzkHbV7lpY3NKF6mW9SYFjZpp4O', 'USER', 3);
+INSERT INTO usuario (nome, login, senha, funcao, pontos) VALUES('Leitor', 'leitor', '$2a$10$6.aE5t3q4.RfwSHzm1nFDe4CeSVzkHbV7lpY3NKF6mW9SYFjZpp4O', 'USER', 14);
 
 INSERT INTO categoria (id, nome) VALUES(1, 'Aventura');
 INSERT INTO categoria (id, nome) VALUES(2, 'Ciência');
@@ -37,6 +39,7 @@ INSERT INTO livro (id, nome, paginas, categoria_id) VALUES(21, 'É Assim que Com
 
 INSERT INTO livro_usuario (usuario_id, livro_id) VALUES(1, 1);
 INSERT INTO livro_usuario (usuario_id, livro_id) VALUES(1, 2);
-INSERT INTO livro_usuario (usuario_id, livro_id) VALUES(1, 3);
-INSERT INTO livro_usuario (usuario_id, livro_id) VALUES(1, 4);
-INSERT INTO livro_usuario (usuario_id, livro_id) VALUES(1, 5);
+INSERT INTO livro_usuario (usuario_id, livro_id) VALUES(2, 2);
+INSERT INTO livro_usuario (usuario_id, livro_id) VALUES(3, 3);
+INSERT INTO livro_usuario (usuario_id, livro_id) VALUES(3, 4);
+INSERT INTO livro_usuario (usuario_id, livro_id) VALUES(3, 5);
