@@ -1,6 +1,6 @@
 package cap.wesantos.jali.rest.controller;
 
-import cap.wesantos.jali.domain.service.UsuarioLivroService;
+import cap.wesantos.jali.domain.service.LivroLidoService;
 import cap.wesantos.jali.rest.controller.dto.HeaderAuthorizationRequestTO;
 import cap.wesantos.jali.rest.controller.dto.LivroResponseTO;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,7 +15,7 @@ import static org.springframework.http.HttpHeaders.AUTHORIZATION;
 @RequestMapping("/api/usuarios/livros")
 public class UsuariosLivrosController {
     @Autowired
-    private UsuarioLivroService service;
+    private LivroLidoService service;
 
     public List<LivroResponseTO> listLivrosLidos(){
         return null;

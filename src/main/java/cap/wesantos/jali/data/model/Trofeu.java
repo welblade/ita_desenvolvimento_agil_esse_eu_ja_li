@@ -1,27 +1,34 @@
 package cap.wesantos.jali.data.model;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import javax.persistence.*;
 
-@Data
 @NoArgsConstructor
 @AllArgsConstructor
+@EqualsAndHashCode(exclude = {"id"})
+@ToString
+@Getter
+@Setter
 @Entity
 @Table(name = "trofeu")
 public class Trofeu {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    @EmbeddedId
+    private TrofeuPK id = new TrofeuPK();
 
     @ManyToOne
-    @JoinColumn(name = "categoria_id", referencedColumnName = "id")
+    @MapsId("categoriaId")
+    @JoinColumn(name = "categoria_id")
     private Categoria categoria;
 
     @ManyToOne
-    @JoinColumn(name = "usuario_id", referencedColumnName = "id")
+    @MapsId("usuarioId")
+    @JoinColumn(name = "usuario_id")
     private Usuario usuario;
+
+    public Trofeu(Categoria categoria, Usuario usuario){
+        this.categoria = categoria;
+        this.usuario = usuario;
+    }
 }

@@ -36,6 +36,8 @@ INSERT INTO livro (id, nome, paginas, categoria_id) VALUES(18, 'Você ligou para
 INSERT INTO livro (id, nome, paginas, categoria_id) VALUES(19, 'O lado feio do amor', 336, 8);
 INSERT INTO livro (id, nome, paginas, categoria_id) VALUES(20, 'É Assim que Acaba', 368, 8);
 INSERT INTO livro (id, nome, paginas, categoria_id) VALUES(21, 'É Assim que Começa', 368, 8);
+INSERT INTO livro (id, nome, paginas, categoria_id) VALUES(22, 'Isso é marketing: Para ser visto é preciso aprender a enxergar ', 288, 12);
+INSERT INTO livro (id, nome, paginas, categoria_id) VALUES(23, 'Tribos: Nós precisamos que vocês nos liderem', 160, 12);
 
 INSERT INTO livro_usuario (usuario_id, livro_id) VALUES(1, 1);
 INSERT INTO livro_usuario (usuario_id, livro_id) VALUES(1, 2);
@@ -43,3 +45,5 @@ INSERT INTO livro_usuario (usuario_id, livro_id) VALUES(2, 2);
 INSERT INTO livro_usuario (usuario_id, livro_id) VALUES(3, 3);
 INSERT INTO livro_usuario (usuario_id, livro_id) VALUES(3, 4);
 INSERT INTO livro_usuario (usuario_id, livro_id) VALUES(3, 5);
+
+INSERT INTO trofeu (categoria_id, usuario_id) VALUES(8, 1);

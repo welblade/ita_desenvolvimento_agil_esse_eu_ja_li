@@ -5,7 +5,7 @@ import cap.wesantos.jali.rest.controller.dto.UsuarioResponseTO;
 import org.mapstruct.Mapper;
 import org.mapstruct.factory.Mappers;
 
-@Mapper
+@Mapper(uses = TrofeuMapper.class)
 public interface UsuarioMapper {
     UsuarioMapper CONVERT = Mappers.getMapper(UsuarioMapper.class);
 
