@@ -16,14 +16,14 @@ public class LivroLido {
     @EmbeddedId
     private LivroLidoPk id = new LivroLidoPk();
 
-    @ManyToOne
+    @ManyToOne(cascade = {CascadeType.REFRESH})
     @MapsId("usuarioId")
-    @JoinColumn(name = "usuario_id")
+    @JoinColumn(name = "usuario_id", nullable = false)
     private Usuario usuario;
 
-    @ManyToOne
+    @ManyToOne(cascade = {CascadeType.REFRESH})
     @MapsId("livroId")
-    @JoinColumn(name = "livro_id")
+    @JoinColumn(name = "livro_id", nullable = false)
     private Livro livro;
 
     public LivroLido(Usuario usuario, Livro livro) {

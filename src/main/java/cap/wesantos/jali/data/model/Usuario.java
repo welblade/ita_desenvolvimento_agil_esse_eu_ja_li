@@ -7,6 +7,8 @@ import javax.persistence.*;
 import java.util.HashSet;
 import java.util.Set;
 
+import static javax.persistence.CascadeType.*;
+
 
 @NoArgsConstructor
 @AllArgsConstructor
@@ -37,10 +39,10 @@ public class Usuario {
     @Column
     private Long pontos = 0L;
 
-    @OneToMany(mappedBy = "usuario")
+    @OneToMany(mappedBy = "usuario", cascade = {REFRESH, REMOVE, MERGE}, orphanRemoval = true)
     private Set<LivroLido> livros = new HashSet<>();
 
-    @OneToMany(mappedBy = "usuario")
+    @OneToMany(mappedBy = "usuario", cascade = {REFRESH, REMOVE, MERGE}, orphanRemoval = true)
     private Set<Trofeu> trofeus = new HashSet<>();
 
 
