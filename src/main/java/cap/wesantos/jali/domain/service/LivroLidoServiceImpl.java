@@ -15,6 +15,7 @@ import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import javax.persistence.EntityExistsException;
 import java.util.NoSuchElementException;
@@ -42,6 +43,7 @@ public class LivroLidoServiceImpl implements LivroLidoService {
 
 
     @Override
+    @Transactional
     public void gravarLivroLido(Long livroId, HeaderAuthorizationRequestTO authorization) {
         Usuario usuario = obterUsuarioUsandoAutorizacao(authorization);
 
@@ -59,6 +61,7 @@ public class LivroLidoServiceImpl implements LivroLidoService {
     }
 
     @Override
+    @Transactional
     public void deletarLivroLido(Long livroId, HeaderAuthorizationRequestTO authorization) {
         Usuario usuario = obterUsuarioUsandoAutorizacao(authorization);
 
@@ -91,7 +94,11 @@ public class LivroLidoServiceImpl implements LivroLidoService {
         var livro = livroLido.getLivro();
 
         usuario.setPontos(calcularPontosDoUsuario(usuario));
+        processarTrofeus(usuario, livro);
+        usuarioRepository.save(usuario);
+    }
 
+    private void processarTrofeus(Usuario usuario, Livro livro) {
         var livrosLidosDaCategoria = qtdLivroLidoCategoria(usuario, livro.getCategoria());
 
         TrofeuPK id = new TrofeuPK(livro.getCategoria().getId(), usuario.getId());
@@ -104,7 +111,6 @@ public class LivroLidoServiceImpl implements LivroLidoService {
                 trofeuRepository.deleteById(id);
             }
         }
-        usuarioRepository.save(usuario);
     }
 
     private long calcularPontosDoUsuario(Usuario usuario) {
