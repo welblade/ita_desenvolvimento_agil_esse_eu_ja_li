@@ -1,9 +1,6 @@
 package cap.wesantos.jali.rest;
 
-import cap.wesantos.jali.core.exception.LivroJaMarcadoComoLidoException;
-import cap.wesantos.jali.core.exception.LivroNaoEncontradoException;
-import cap.wesantos.jali.core.exception.LivroNaoMarcadoComoLidoException;
-import cap.wesantos.jali.core.exception.SenhaInvalidaException;
+import cap.wesantos.jali.core.exception.*;
 import org.springframework.context.support.DefaultMessageSourceResolvable;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.web.bind.MethodArgumentNotValidException;
@@ -38,6 +35,12 @@ public class ApiControllerAdvisor {
     @ExceptionHandler(UsernameNotFoundException.class)
     @ResponseStatus(UNAUTHORIZED)
     public ApiErrors usernameNotFoundExceptionHandler(UsernameNotFoundException exception) {
+        return new ApiErrors(exception.getMessage());
+    }
+
+    @ExceptionHandler(UsuarioNaoEncontradoException.class)
+    @ResponseStatus(NOT_FOUND)
+    public ApiErrors usuarioNaoEncontradoExceptionHandler(UsuarioNaoEncontradoException exception) {
         return new ApiErrors(exception.getMessage());
     }
 

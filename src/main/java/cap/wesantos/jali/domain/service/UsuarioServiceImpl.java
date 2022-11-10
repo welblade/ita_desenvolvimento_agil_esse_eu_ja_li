@@ -1,5 +1,6 @@
 package cap.wesantos.jali.domain.service;
 
+import cap.wesantos.jali.core.exception.UsuarioNaoEncontradoException;
 import cap.wesantos.jali.core.security.JwtService;
 import cap.wesantos.jali.data.model.Usuario;
 import cap.wesantos.jali.data.repository.UsuarioRepository;
@@ -57,7 +58,7 @@ public class UsuarioServiceImpl implements UserDetailsService, UsuarioService {
     @Override
     public PerfilUsuarioResponseTO obterPerfilUsuarioPorId(Long usuarioId) {
         return repository.findById(usuarioId).map(UsuarioMapper.CONVERT::toPerfilResponseTO)
-                .orElseThrow();
+                .orElseThrow(UsuarioNaoEncontradoException::new);
     }
 
     @Override

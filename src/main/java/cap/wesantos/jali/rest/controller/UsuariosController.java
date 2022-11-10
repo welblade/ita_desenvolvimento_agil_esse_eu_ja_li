@@ -30,7 +30,7 @@ public class UsuariosController {
         return service.obterRankingLeitura();
     }
 
-    @GetMapping("/perfil/{id}")
+    @GetMapping("{id}/perfil")
     @ResponseBody
     public PerfilUsuarioResponseTO obterPerfil(@PathVariable("id") Long usuarioId) {
         return service.obterPerfilUsuarioPorId(usuarioId);
