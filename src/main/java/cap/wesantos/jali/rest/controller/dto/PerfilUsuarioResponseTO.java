@@ -12,12 +12,18 @@ import java.util.List;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-public class UsuarioResponseTO {
+public class PerfilUsuarioResponseTO {
     private Long id;
 
     private String nome;
 
     private String login;
 
+    private Funcao funcao;
+
     private Long pontos;
+
+    private List<TrofeuResponseTO> trofeus;
+
+    private List<LivroResponseTO> livros;
 }

@@ -2,6 +2,7 @@ package cap.wesantos.jali.rest.controller;
 
 import cap.wesantos.jali.domain.service.UsuarioService;
 import cap.wesantos.jali.rest.controller.dto.HeaderAuthorizationRequestTO;
+import cap.wesantos.jali.rest.controller.dto.PerfilUsuarioResponseTO;
 import cap.wesantos.jali.rest.controller.dto.UsuarioResponseTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -27,6 +28,20 @@ public class UsuariosController {
     @ResponseBody
     public List<UsuarioResponseTO> obterRanking() {
         return service.obterRankingLeitura();
+    }
+
+    @GetMapping("/perfil/{id}")
+    @ResponseBody
+    public PerfilUsuarioResponseTO obterPerfil(@PathVariable("id") Long usuarioId) {
+        return service.obterPerfilUsuarioPorId(usuarioId);
+    }
+
+    @GetMapping("/perfil")
+    @ResponseBody
+    public PerfilUsuarioResponseTO obterMeuPerfil(
+            @RequestHeader(value = AUTHORIZATION) HeaderAuthorizationRequestTO authorization
+    ) {
+        return service.obterPerfilUsuarioPorAutorizacao(authorization);
     }
 
 }

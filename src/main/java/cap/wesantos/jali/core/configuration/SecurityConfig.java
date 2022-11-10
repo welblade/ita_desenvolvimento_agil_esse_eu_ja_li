@@ -44,6 +44,8 @@ public class SecurityConfig {
                         .hasAnyRole("USER", "ADMIN")
                         .antMatchers("/api/usuarios/livros/**")
                         .hasAnyRole("USER", "ADMIN")
+                        .antMatchers("/api/usuarios/perfil/**")
+                        .hasAnyRole("USER", "ADMIN")
                         .antMatchers("/api/livros/**")
                         .hasAnyRole("USER", "ADMIN")
                         .anyRequest().authenticated()

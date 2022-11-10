@@ -1,10 +1,13 @@
 package cap.wesantos.jali.domain.service;
 
+import cap.wesantos.jali.core.security.JwtService;
 import cap.wesantos.jali.data.model.Usuario;
 import cap.wesantos.jali.data.repository.UsuarioRepository;
 import cap.wesantos.jali.domain.mapper.UsuarioMapper;
+import cap.wesantos.jali.rest.controller.dto.HeaderAuthorizationRequestTO;
+import cap.wesantos.jali.rest.controller.dto.PerfilUsuarioResponseTO;
 import cap.wesantos.jali.rest.controller.dto.UsuarioResponseTO;
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Sort;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -15,11 +18,12 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 import java.util.stream.Collectors;
 
+@RequiredArgsConstructor
 @Service
 public class UsuarioServiceImpl implements UserDetailsService, UsuarioService {
 
-    @Autowired
-    UsuarioRepository repository;
+    private final JwtService jwtService;
+    private final UsuarioRepository repository;
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
@@ -48,5 +52,22 @@ public class UsuarioServiceImpl implements UserDetailsService, UsuarioService {
                 .stream()
                 .map(UsuarioMapper.CONVERT::toResponseTO)
                 .collect(Collectors.toList());
+    }
+
+    @Override
+    public PerfilUsuarioResponseTO obterPerfilUsuarioPorId(Long usuarioId) {
+        return repository.findById(usuarioId).map(UsuarioMapper.CONVERT::toPerfilResponseTO)
+                .orElseThrow();
+    }
+
+    @Override
+    public PerfilUsuarioResponseTO obterPerfilUsuarioPorAutorizacao(HeaderAuthorizationRequestTO authorization) {
+        return UsuarioMapper.CONVERT.toPerfilResponseTO(obterUsuarioUsandoAutorizacao(authorization));
+    }
+
+    public Usuario obterUsuarioUsandoAutorizacao(HeaderAuthorizationRequestTO authorization) {
+        String login = jwtService.obterLoginUsuario(authorization.getAuthorization());
+        return repository.findByLogin(login)
+                .orElseThrow(() -> new UsernameNotFoundException("Usuário não autenticado."));
     }
 }
