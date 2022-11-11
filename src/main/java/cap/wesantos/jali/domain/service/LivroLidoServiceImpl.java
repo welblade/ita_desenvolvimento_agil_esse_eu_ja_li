@@ -23,10 +23,10 @@ import java.util.NoSuchElementException;
 @RequiredArgsConstructor
 @Service
 public class LivroLidoServiceImpl implements LivroLidoService {
-    private final int PONTO_POR_LIVRO = 1;
-    private final int PONTO_BONUS_DE_PAGINAS = 1;
-    private final int QUANTIDADE_PAGINAS_BONUS = 100;
-    private final int REQUISITO_LIVROS_LIDOS = 5;
+    private static final long PONTO_POR_LIVRO = 1L;
+    private static final long PONTO_BONUS_DE_PAGINAS = 1;
+    private static final long QUANTIDADE_PAGINAS_BONUS = 100;
+    private static final long REQUISITO_LIVROS_LIDOS = 5;
     private final JwtService jwtService;
 
     private final UsuarioRepository usuarioRepository;
