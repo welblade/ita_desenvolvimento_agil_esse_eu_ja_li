@@ -15,7 +15,12 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
 public class JwtAuthFilter extends OncePerRequestFilter {
-
+/*
+   OncePerRequestFilter é executado uma vez a cara requisição feita à API.
+   Ela tem um método doFilterInternal() onde o jwt vai ser decodificado e validado
+   e então carregar o Userdetails (usando UserDetailsService),
+   verificando Authorization (usando UsernamePasswordAuthenticationToken).
+ */
     private final JwtService jwtService;
     private final UserDetailsService usuarioService;
 
@@ -34,6 +39,11 @@ public class JwtAuthFilter extends OncePerRequestFilter {
             if (jwtService.isTokenValido(token)) {
                 String loginUsuario = jwtService.obterLoginUsuario(token);
                 UserDetails usuario = usuarioService.loadUserByUsername(loginUsuario);
+                /*
+                 UsernamePasswordAuthenticationToken recebe {username, password}
+                 vindo da requisição, o "AuthenticationManager" usará isso para autenticar
+                 uma conta de login.
+                 */
                 UsernamePasswordAuthenticationToken userToken = new UsernamePasswordAuthenticationToken(
                         usuario,
                         null,

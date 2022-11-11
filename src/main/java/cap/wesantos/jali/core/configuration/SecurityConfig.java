@@ -36,6 +36,9 @@ public class SecurityConfig {
 
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
+        /*
+            HttpSecurity configura cors, csrf, session management, e "rules" para proteger os recursos
+         */
         http
                 .csrf().disable()
                 .authorizeHttpRequests((authorize) -> authorize

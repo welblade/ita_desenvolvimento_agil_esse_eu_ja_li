@@ -22,12 +22,20 @@ import java.util.stream.Collectors;
 @RequiredArgsConstructor
 @Service
 public class UsuarioServiceImpl implements UserDetailsService, UsuarioService {
-
+    /*
+    Interface UserDetailsService possui um método para carregar o usuário usando "username"
+    e retorna um objeto UserDetails que o Spring Security pode usar para autenticação e
+    validação
+     */
     private final JwtService jwtService;
     private final UsuarioRepository repository;
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
+        /*
+            UserDetails possui informações necessárias (como: username, password, authorities)
+            para criar um objeto Authentication.
+         */
         Usuario usuario = repository.findByLogin(username)
                 .orElseThrow(
                         () -> new UsernameNotFoundException("Usuário não encontrado na base de dados.")
