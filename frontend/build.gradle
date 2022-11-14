@@ -12,9 +12,16 @@ node {
   nodeModulesDir = file("${project.projectDir}")
 }
 
-task build(type: NpmTask) {
-  args = ['run', 'build']
+task build(type: NpxTask) {
+  command = '@angular/cli@14.2.6'
+  args = ['build', '--configuration=production']
 }
+
+task dev_build(type: NpxTask) {
+  command = '@angular/cli@14.2.6'
+  args = ['build', '--configuration=development']
+}
+
 
 //build.dependsOn(npm_install)
 //frontend:build will be run before the processResources

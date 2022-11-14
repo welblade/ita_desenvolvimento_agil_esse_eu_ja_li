@@ -10,6 +10,8 @@ import cap.wesantos.jali.rest.controller.dto.PerfilUsuarioResponseTO;
 import cap.wesantos.jali.rest.controller.dto.UsuarioResponseTO;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Sort;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
@@ -40,11 +42,14 @@ public class UsuarioServiceImpl implements UserDetailsService, UsuarioService {
                 .orElseThrow(
                         () -> new UsernameNotFoundException("Usuário não encontrado na base de dados.")
                 );
+        /* Se colocar mais de um tipo de permissão, pode ser usada uma lista de GrantedAuthority */
+       GrantedAuthority authority =  new SimpleGrantedAuthority(usuario.getFuncao().name());
 
         return User
                 .builder()
                 .username(usuario.getLogin())
                 .password(usuario.getSenha())
+                .authorities(authority)
                 .roles(usuario.getFuncao().name())
                 .build();
     }

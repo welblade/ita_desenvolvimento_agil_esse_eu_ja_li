@@ -19,6 +19,11 @@ import org.springframework.web.filter.OncePerRequestFilter;
 public class SecurityConfig {
 
     private static final String[] AUTH_WHITELIST = {
+            "/",
+            "/*.css",
+            "/*.js",
+            "/*.ico",
+            "/*.map",
             "/api/auth/**",
             "/api/auth"
     };
@@ -53,6 +58,10 @@ public class SecurityConfig {
                         .hasAnyRole("USER", "ADMIN")
                         .antMatchers("/api/livros/**")
                         .hasAnyRole("USER", "ADMIN")
+                        .antMatchers("/home/**")
+                        .hasAnyRole( "ADMIN")
+                        .antMatchers("/perfil/**")
+                        .hasAnyRole( "ADMIN")
                         .anyRequest().authenticated()
                 )
                 .sessionManagement()

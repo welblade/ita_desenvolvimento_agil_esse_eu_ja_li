@@ -8,13 +8,27 @@ spring:
       enable: false
       path: /h2
   jpa:
+    open-in-view: false
+    properties:
+      hibernate:
+        format_sql: true
     defer-datasource-initialization: true
     hibernate:
       ddl-auto: create-drop
-    properties:
+  output:
+    ansi:
+      enabled: ALWAYS
+
+logging:
+  level:
+    org:
       hibernate:
-        show_sql: true
-        format_sql: true
+        pretty: TRACE
+        SQL: debug
+        type:
+          descriptor:
+            sql: trace
+
 security:
   jwt:
     validade: 30
