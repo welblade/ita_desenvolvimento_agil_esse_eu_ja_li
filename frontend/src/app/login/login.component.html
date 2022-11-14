@@ -1,0 +1,67 @@
+<section>
+    <div class="container"> 
+        <form 
+        class="example-form"
+            *ngIf="!isLoggedIn"
+            name="form"
+            (ngSubmit)="f.form.valid && onSubmit()"
+            #f="ngForm"
+            novalidate
+            >
+            <mat-form-field class="example-full-width">
+                <mat-label>Nome de Usuário:</mat-label>
+                <input matInput
+                    type="text"
+                    class="form-control"
+                    name="login"
+                    [(ngModel)]="form.login"
+                    required
+                    #login="ngModel"
+                    [ngClass]="{ 'is-invalid': f.submitted && login.errors }"
+                >
+                
+                <mat-error *ngIf="login.errors && f.submitted" >
+                    Username is required!
+                </mat-error>
+            </mat-form-field>
+
+
+            <mat-form-field class="example-full-width">
+                <mat-label>Senha:</mat-label>
+                <input matInput
+                    type="password"
+                    class="form-control"
+                    name="senha"
+                    [(ngModel)]="form.senha"
+                    required
+                    minlength="3"
+                    #senha="ngModel"
+                    [ngClass]="{ 'is-invalid': f.submitted && senha.errors }"
+                >
+
+                <mat-error *ngIf="senha.errors && f.submitted">
+                    <mat-error *ngIf="senha.errors['required']" >
+                        Senha é obrigatória
+                    </mat-error>
+                    <mat-error *ngIf="senha.errors['minlength']" >
+                        A senha deve ter pelo menos 3 caracteres
+                    </mat-error>
+                </mat-error>
+            </mat-form-field>
+
+
+            <button mat-raised-button color="primary" [disabled]="!f.form.valid">Primary</button>
+
+            <div class="form-group">
+            <div *ngIf="f.submitted && isLoginFailed" class="alert alert-danger" role="alert">
+                Login failed: {{ errorMessage }}
+            </div>
+            </div>
+
+        </form>
+        
+        <div class="alert alert-success" *ngIf="isLoggedIn">
+            Logged in as {{ roles }}.
+        </div>
+    </div>
+</section>
