@@ -1,9 +1,8 @@
 section {
   display: flex;
   justify-content: center;
-}
-.example-full-width {
-    width: 100%;
+  justify-items: center;
+  height: 100vh;
 }
 form {
   display: flex;
@@ -12,6 +11,8 @@ form {
 
 mat-card {
   width: 300px;
+  height: min-content;
+  align-self: center;
 }
 mat-card-title {
   margin-bottom: 1.5rem;

@@ -18,7 +18,6 @@ spring:
   output:
     ansi:
       enabled: ALWAYS
-
 logging:
   level:
     org:

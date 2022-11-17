@@ -1,0 +1,15 @@
+mat-toolbar {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+mat-toolbar h3 {
+    align-self: center;
+    justify-self: flex-start;
+    font-weight: bolder;
+}
+.toolbar__container {
+    width: inherit;
+    display: flex;
+    justify-content: center;
+}

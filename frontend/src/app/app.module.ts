@@ -23,6 +23,7 @@ import { LivroListComponent } from './home/livro-list/livro-list.component';
 import { AuthGuard } from './_helpers/auth.guard';
 import { ToolbarComponent } from './toolbar/toolbar.component';
 import { MatListModule } from  '@angular/material/list';
+import { MatCheckboxModule } from  '@angular/material/checkbox';
 @NgModule({
   declarations: [
     AppComponent,
@@ -48,6 +49,7 @@ import { MatListModule } from  '@angular/material/list';
     MatProgressBarModule,
     MatToolbarModule,
     MatListModule,
+    MatCheckboxModule,
   ],
   providers: [httpInterceptorProviders, AuthGuard],
   bootstrap: [AppComponent]

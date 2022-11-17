@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { StorageService } from './_services/storage.service';
 import { AuthService } from './_services/auth.service';
+import { UserInfo } from './model/user-info.model';
 
 @Component({
   selector: 'app-root',
@@ -13,7 +14,7 @@ export class AppComponent {
   isLoggedIn = false;
   showAdminBoard = false;
   showModeratorBoard = false;
-  username?: string;
+  user: UserInfo = new UserInfo();
 
   constructor(private storageService: StorageService, private authService: AuthService) { }
 
@@ -21,13 +22,11 @@ export class AppComponent {
     this.isLoggedIn = this.storageService.isLoggedIn();
 
     if (this.isLoggedIn) {
-      const user = this.storageService.getUser();
-      this.roles = user.autorizacoes;
+      this.user = this.storageService.getUser();
+      this.roles = this.user.autorizacoes;
 
       this.showAdminBoard = this.roles.includes('ADMIN');
       this.showModeratorBoard = this.roles.includes('USER');
-
-      this.username = user.info;
     }
   }
 }
