@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Livro } from '../model/livro.model';
 import { LivrosService } from '../_services/livros.service';
-
+import { Router } from '@angular/router';
+import { StorageService } from '../_services/storage.service';
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',

@@ -1,5 +1,6 @@
 <section>
-    <div class="container"> 
+    <mat-card>
+        <mat-card-title>Login</mat-card-title>
         <form 
         class="example-form"
             *ngIf="!isLoggedIn"
@@ -50,7 +51,7 @@
             </mat-form-field>
 
 
-            <button mat-raised-button color="primary" [disabled]="!f.form.valid">Primary</button>
+            <button mat-raised-button color="primary" [disabled]="!f.form.valid">Autenticar</button>
 
             <div class="form-group">
             <div *ngIf="f.submitted && isLoginFailed" class="alert alert-danger" role="alert">
@@ -63,5 +64,8 @@
         <div class="alert alert-success" *ngIf="isLoggedIn">
             Logged in as {{ roles }}.
         </div>
-    </div>
+        <mat-card-footer>
+            <mat-progress-bar *ngIf="isLoading" mode="indeterminate"></mat-progress-bar>
+        </mat-card-footer>
+    </mat-card>
 </section>

@@ -5,3 +5,22 @@ section {
 .example-full-width {
     width: 100%;
 }
+form {
+  display: flex;
+  flex-direction: column;
+}
+
+mat-card {
+  width: 300px;
+}
+mat-card-title {
+  margin-bottom: 1.5rem;
+}
+mat-card-footer {
+  margin-top: 1.5rem;
+}
+
+button {
+  width: 150px;
+  align-self: flex-end;
+}

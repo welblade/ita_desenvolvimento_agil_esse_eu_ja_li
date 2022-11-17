@@ -5,6 +5,7 @@ import cap.wesantos.jali.core.security.JwtService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.http.HttpMethod;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.core.userdetails.UserDetailsService;
@@ -20,6 +21,7 @@ public class SecurityConfig {
 
     private static final String[] AUTH_WHITELIST = {
             "/",
+            "/login",
             "/*.css",
             "/*.js",
             "/*.ico",
@@ -48,6 +50,7 @@ public class SecurityConfig {
                 .csrf().disable()
                 .authorizeHttpRequests((authorize) -> authorize
                         .antMatchers(AUTH_WHITELIST).permitAll()
+                        .antMatchers(HttpMethod.OPTIONS, "/**").permitAll()
                         .antMatchers("/api/usuarios/**")
                         .hasAnyRole("USER", "ADMIN")
                         .antMatchers("/api/usuarios/livros/**")

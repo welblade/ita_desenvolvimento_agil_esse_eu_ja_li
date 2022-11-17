@@ -3,15 +3,15 @@ import { RouterModule, Routes } from '@angular/router';
 import { HomeComponent } from './home/home.component';
 import { LoginComponent } from './login/login.component';
 import { PerfilComponent } from './perfil/perfil.component'
+import { AuthGuard } from './_helpers/auth.guard';
 
 const routes: Routes = [
-  { path: 'home', component: HomeComponent },
   { path: 'login', component: LoginComponent },
-  //{ path: 'register', component: RegisterComponent },
-  { path: 'perfil', component: PerfilComponent },
-  //{ path: 'user', component: BoardUserComponent },
-  //{ path: 'mod', component: BoardModeratorComponent },
-  //{ path: 'admin', component: BoardAdminComponent },
+  { path: 'home', component: HomeComponent , canActivate: [AuthGuard]},
+  { path: 'perfil', component: PerfilComponent, canActivate: [AuthGuard]},
+  //{ path: 'user', component: BoardUserComponent, canActivate: [AuthGuard]},
+  //{ path: 'mod', component: BoardModeratorComponent, canActivate: [AuthGuard]},
+  //{ path: 'admin', component: BoardAdminComponent, canActivate: [AuthGuard]},
   //{ path: '', redirectTo: 'home', pathMatch: 'full' }
 ];
 
