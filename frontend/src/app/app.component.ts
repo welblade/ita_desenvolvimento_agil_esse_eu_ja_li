@@ -16,7 +16,10 @@ export class AppComponent {
   showModeratorBoard = false;
   user: UserInfo = new UserInfo();
 
-  constructor(private storageService: StorageService, private authService: AuthService) { }
+  constructor(
+    private storageService: StorageService, 
+    private authService: AuthService
+  ) { }
 
   ngOnInit(): void {
     this.isLoggedIn = this.storageService.isLoggedIn();
@@ -29,4 +32,6 @@ export class AppComponent {
       this.showModeratorBoard = this.roles.includes('USER');
     }
   }
+
+
 }

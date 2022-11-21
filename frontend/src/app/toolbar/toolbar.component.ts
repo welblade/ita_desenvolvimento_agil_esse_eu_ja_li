@@ -1,17 +1,21 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input } from '@angular/core';
+import { Router } from '@angular/router';
 import { UserInfo } from '../model/user-info.model';
+import { StorageService } from '../_services/storage.service';
 
 @Component({
   selector: 'app-toolbar',
   templateUrl: './toolbar.component.html',
   styleUrls: ['./toolbar.component.css']
 })
-export class ToolbarComponent implements OnInit {
+export class ToolbarComponent {
 
   @Input() usuario: UserInfo = new UserInfo();
 
-  constructor() { }
+  constructor(private storageService: StorageService, private router: Router) { }
 
-  ngOnInit(): void {
+  logOut() {
+    this.storageService.clean();
+    this.router.navigate(['login'])
   }
 }

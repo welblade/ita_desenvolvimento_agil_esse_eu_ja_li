@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import {Router} from "@angular/router"
+
 import { AuthService } from '../_services/auth.service';
 import { StorageService } from '../_services/storage.service';
 
@@ -23,6 +25,7 @@ export class LoginComponent implements OnInit {
   constructor(
     private authService: AuthService, 
     private storageService: StorageService,
+    private router: Router
     ) { }
 
   ngOnInit(): void {
@@ -54,7 +57,7 @@ export class LoginComponent implements OnInit {
 
   
   reloadPage(): void {
-    window.location.reload();
+    this.router.navigate(['home']);
   }
 
 }

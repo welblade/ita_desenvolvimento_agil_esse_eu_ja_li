@@ -6,13 +6,13 @@ import { PerfilComponent } from './perfil/perfil.component'
 import { AuthGuard } from './_helpers/auth.guard';
 
 const routes: Routes = [
+  //{ path: '', redirectTo: 'home', pathMatch: 'full' },
   { path: 'login', component: LoginComponent },
   { path: 'home', component: HomeComponent , canActivate: [AuthGuard]},
   { path: 'perfil', component: PerfilComponent, canActivate: [AuthGuard]},
   //{ path: 'user', component: BoardUserComponent, canActivate: [AuthGuard]},
   //{ path: 'mod', component: BoardModeratorComponent, canActivate: [AuthGuard]},
   //{ path: 'admin', component: BoardAdminComponent, canActivate: [AuthGuard]},
-  //{ path: '', redirectTo: 'home', pathMatch: 'full' }
 ];
 
 @NgModule({
