@@ -1,4 +1,5 @@
 <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+  <caption>Livros</caption>
     <ng-container matColumnDef="id">
         <th mat-header-cell *matHeaderCellDef> No. </th>
         <td mat-cell *matCellDef="let livro"> {{livro.id}} </td>
@@ -18,7 +19,7 @@
       <ng-container matColumnDef="isLido">
         <th mat-header-cell *matHeaderCellDef> Lido </th>
         <td mat-cell *matCellDef="let livro">
-          <mat-checkbox [checked]="livro.lido"></mat-checkbox>
+          <mat-checkbox [checked]="livro.lido" (change)="marcarLivroLido($event, livro.id)"></mat-checkbox>
         </td>
       </ng-container>
       <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>

@@ -2,7 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 
-const API_URL = 'http://localhost:8080/api/';
+const API_URL = 'http://localhost:8080/api/usuarios';
 
 @Injectable({
   providedIn: 'root'
@@ -10,22 +10,14 @@ const API_URL = 'http://localhost:8080/api/';
 export class UserService {
 
   constructor(private http: HttpClient) {}
+
   // TODO: mudar para os métodos da api
-  getPublicContent(): Observable<any> {
-    return this.http.get(API_URL + 'all', { responseType: 'text' });
+  marcarLivroLido(id: number) {
+    return this.http.post(`${API_URL}/livros/${id}`, { responseType: 'text' });
   }
 
-  getUserBoard(): Observable<any> {
-    return this.http.get(API_URL + 'user', { responseType: 'text' });
+  desmarcarLivroLido(id: number) {
+    return this.http.delete(`${API_URL}/livros/${id}`, { responseType: 'text' });
   }
-  
-  getModeratorBoard(): Observable<any> {
-    return this.http.get(API_URL + 'mod', { responseType: 'text' });
-  }
-
-  getAdminBoard(): Observable<any> {
-    return this.http.get(API_URL + 'admin', { responseType: 'text' });
-  }
-
 
 }

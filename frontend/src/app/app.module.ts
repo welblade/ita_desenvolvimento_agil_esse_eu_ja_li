@@ -24,6 +24,7 @@ import { AuthGuard } from './_helpers/auth.guard';
 import { ToolbarComponent } from './toolbar/toolbar.component';
 import { MatListModule } from  '@angular/material/list';
 import { MatCheckboxModule } from  '@angular/material/checkbox';
+import { UserService } from './_services/user.service';
 @NgModule({
   declarations: [
     AppComponent,
@@ -51,7 +52,7 @@ import { MatCheckboxModule } from  '@angular/material/checkbox';
     MatListModule,
     MatCheckboxModule,
   ],
-  providers: [httpInterceptorProviders, AuthGuard],
+  providers: [httpInterceptorProviders, AuthGuard, UserService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
