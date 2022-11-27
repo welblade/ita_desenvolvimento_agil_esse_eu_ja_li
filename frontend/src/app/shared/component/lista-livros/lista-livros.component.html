@@ -1,5 +1,5 @@
 <section>
-  <mat-grid-list cols="5" gutterSize="8px" rowHeight="400px">
+  <mat-grid-list [cols]="cols" gutterSize="8px" rowHeight="160px">
     <mat-grid-tile *ngFor="let livro of dataSource" >
       <thumbnail-livro [livro]="livro"></thumbnail-livro>
     </mat-grid-tile>
