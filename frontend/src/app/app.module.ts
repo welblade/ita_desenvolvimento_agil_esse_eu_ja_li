@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { HttpClientModule } from '@angular/common/http' 
+import { HttpClientModule } from '@angular/common/http'
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
@@ -19,20 +19,19 @@ import { LoginComponent } from './login/login.component';
 import { HomeComponent } from './home/home.component';
 import { PerfilComponent } from './perfil/perfil.component';
 import { httpInterceptorProviders } from './_helpers/http.interceptor';
-import { LivroListComponent } from './home/livro-list/livro-list.component';
 import { AuthGuard } from './_helpers/auth.guard';
 import { ToolbarComponent } from './toolbar/toolbar.component';
 import { MatListModule } from  '@angular/material/list';
 import { MatCheckboxModule } from  '@angular/material/checkbox';
 import { UserService } from './_services/user.service';
+import {ListaLivrosModule} from "./shared/component/lista-livros/lista-livros.module";
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
     HomeComponent,
     PerfilComponent,
-    LivroListComponent,
-    ToolbarComponent
+    ToolbarComponent,
   ],
   imports: [
     BrowserModule,
@@ -51,6 +50,7 @@ import { UserService } from './_services/user.service';
     MatToolbarModule,
     MatListModule,
     MatCheckboxModule,
+    ListaLivrosModule,
   ],
   providers: [httpInterceptorProviders, AuthGuard, UserService],
   bootstrap: [AppComponent]

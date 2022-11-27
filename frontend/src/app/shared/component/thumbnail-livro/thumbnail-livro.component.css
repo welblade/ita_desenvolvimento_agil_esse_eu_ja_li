@@ -1,0 +1,11 @@
+mat-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 9px;
+  width: 200px;
+}
+mat-card img {
+  height: 128px;
+  width: 83px;
+}

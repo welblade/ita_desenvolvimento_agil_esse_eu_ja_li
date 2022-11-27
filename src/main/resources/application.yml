@@ -1,4 +1,5 @@
 spring:
+  mandatory-file-encoding: utf-8
   datasource:
     url: jdbc:h2:~/databases/jalidb
     username: sa
@@ -18,6 +19,9 @@ spring:
   output:
     ansi:
       enabled: ALWAYS
+  sql:
+    init:
+      encoding: UTF-8
 logging:
   level:
     org:
