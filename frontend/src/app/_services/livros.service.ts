@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { Livro } from '../model/livro.model';
+import { Livro } from '../shared/model/livro.model';
 
 const API_URL = 'http://localhost:8080/api/livros';
 

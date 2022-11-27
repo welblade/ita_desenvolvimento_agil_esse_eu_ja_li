@@ -1,7 +1,7 @@
 import { Component, Input } from '@angular/core';
 import { Router } from '@angular/router';
-import { UserInfo } from '../model/user-info.model';
-import { StorageService } from '../_services/storage.service';
+import { UserInfo } from '../../model/user-info.model';
+import { StorageService } from '../../../_services/storage.service';
 
 @Component({
   selector: 'app-toolbar',

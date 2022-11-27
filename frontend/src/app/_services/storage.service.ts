@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { UserInfo } from '../model/user-info.model';
+import { UserInfo } from '../shared/model/user-info.model';
 
 const USER_KEY = 'auth-user';
 

@@ -1,5 +1,5 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {Livro} from "../../../model/livro.model";
+import {Livro} from "../../model/livro.model";
 
 @Component({
   selector: 'thumbnail-livro',

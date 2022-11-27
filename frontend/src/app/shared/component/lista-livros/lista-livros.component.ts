@@ -1,5 +1,5 @@
 import {Component, Input, OnChanges, SimpleChanges} from '@angular/core';
-import {Livro} from "../../../model/livro.model";
+import {Livro} from "../../model/livro.model";
 import {UserService} from "../../../_services/user.service";
 
 @Component({
