@@ -1,7 +1,7 @@
 <section>
     <mat-card>
         <mat-card-title>Login</mat-card-title>
-        <form 
+        <form
         class="example-form"
             *ngIf="!isLoggedIn"
             name="form"
@@ -20,7 +20,7 @@
                     #login="ngModel"
                     [ngClass]="{ 'is-invalid': f.submitted && login.errors }"
                 >
-                
+
                 <mat-error *ngIf="login.errors && f.submitted" >
                     Username is required!
                 </mat-error>
@@ -37,8 +37,7 @@
                     required
                     minlength="3"
                     #senha="ngModel"
-                    [ngClass]="{ 'is-invalid': f.submitted && senha.errors }"
-                >
+                    [ngClass]="{ 'is-invalid': f.submitted && senha.errors }">
 
                 <mat-error *ngIf="senha.errors && f.submitted">
                     <mat-error *ngIf="senha.errors['required']" >
@@ -60,7 +59,7 @@
             </div>
 
         </form>
-        
+
         <div class="alert alert-success" *ngIf="isLoggedIn">
             Logged in as {{ roles }}.
         </div>

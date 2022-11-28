@@ -1,5 +1,5 @@
 <mat-card>
-    <img mat-card-image src="http://placeimg.com/333/500/arch/sepia" alt="">
+    <img mat-card-image src="https://placeimg.com/333/500/arch/sepia" alt="">
     <mat-card-content>
         <mat-card-header>
             <mat-card-title [title]="livro?.nome">{{ livro?.nome }}</mat-card-title>
@@ -7,7 +7,7 @@
         </mat-card-header>
         <mat-card-actions>
             <button mat-button>DETALHES</button>
-            <button mat-button>JÁ LI</button>
+            <app-button-livro-lido [lido]="livro?.lido || false" (clickJaLido)="emitirJaLidoButtonEvent($event)"></app-button-livro-lido>
         </mat-card-actions>
     </mat-card-content>
 </mat-card>

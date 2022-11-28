@@ -7,5 +7,5 @@ export class Livro {
 
     categoria: string = '';
 
-    isLido: boolean = false;
+    lido: boolean = false;
 }

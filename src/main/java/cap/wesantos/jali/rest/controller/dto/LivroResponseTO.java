@@ -18,5 +18,5 @@ public class LivroResponseTO {
 
     private String categoria;
 
-    private boolean isLido;
+    private boolean lido;
 }

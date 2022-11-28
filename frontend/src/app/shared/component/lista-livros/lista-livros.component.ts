@@ -9,7 +9,7 @@ import {UserService} from "../../../_services/user.service";
 })
 export class ListaLivrosComponent implements OnChanges {
     @Input() livros: Livro[] = [];
-    @Input('cols') cols: string = "2";
+    @Input('cols') cols: number = 2;
     dataSource: Livro[] = [];
 
     constructor(private userService: UserService) {
@@ -20,7 +20,8 @@ export class ListaLivrosComponent implements OnChanges {
     }
 
     marcarLivroLido(evento: any, id: number) {
-        if (evento.checked) {
+        console.log(evento);
+        if (evento) {
             this.userService.marcarLivroLido(id).subscribe(
                 {next: () => console.log('retorno marcar livro')}
             );

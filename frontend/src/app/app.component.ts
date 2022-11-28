@@ -1,6 +1,5 @@
-import { Component } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import { StorageService } from './_services/storage.service';
-import { AuthService } from './_services/auth.service';
 import { UserInfo } from './shared/model/user-info.model';
 
 @Component({
@@ -8,7 +7,7 @@ import { UserInfo } from './shared/model/user-info.model';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent {
+export class AppComponent implements OnInit {
   title = 'jali';
   private roles: string[] = [];
   isLoggedIn = false;
@@ -18,7 +17,6 @@ export class AppComponent {
 
   constructor(
     private storageService: StorageService,
-    private authService: AuthService
   ) { }
 
   ngOnInit(): void {

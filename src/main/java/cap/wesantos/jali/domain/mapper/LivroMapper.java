@@ -13,16 +13,16 @@ public interface LivroMapper {
     LivroMapper CONVERT = Mappers.getMapper(LivroMapper.class);
 
     @Mapping(target = "categoria", source = "categoria.nome")
-    @Mapping(target = "isLido", ignore = true)
+    @Mapping(target = "lido", ignore = true)
     LivroResponseTO toResponseDTO(Livro livro);
 
-    @Mapping(target = "isLido", source = "lido")
+    @Mapping(target = "lido", source = "lido")
     LivroResponseTO toResponseDTO(LivroView livro);
 
     @Mapping(target = "id", source = "livro.id")
     @Mapping(target = "nome", source = "livro.nome")
     @Mapping(target = "paginas", source = "livro.paginas")
     @Mapping(target = "categoria", source = "livro.categoria.nome")
-    @Mapping(target = "isLido", constant = "true")
+    @Mapping(target = "lido", constant = "true")
     LivroResponseTO toResponseDTO(LivroLido livro);
 }

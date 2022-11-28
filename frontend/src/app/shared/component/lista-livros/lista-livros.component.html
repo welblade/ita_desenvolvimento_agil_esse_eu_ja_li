@@ -1,7 +1,9 @@
 <section>
   <mat-grid-list [cols]="cols" gutterSize="8px" rowHeight="160px">
     <mat-grid-tile *ngFor="let livro of dataSource" >
-      <thumbnail-livro [livro]="livro"></thumbnail-livro>
+      <thumbnail-livro [livro]="livro"
+           (clickJaLido)="marcarLivroLido($event, livro.id)">
+      </thumbnail-livro>
     </mat-grid-tile>
   </mat-grid-list>
 </section>

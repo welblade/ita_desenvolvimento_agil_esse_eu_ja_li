@@ -12,6 +12,7 @@ import {UserService} from './_services/user.service';
 import {HomeModule} from "./home/home.module";
 import {LoginModule} from "./login/login.module";
 import {ToolbarModule} from "./shared/component/toolbar/toolbar.module";
+import {StorageService} from "./_services/storage.service";
 
 @NgModule({
     declarations: [
@@ -27,7 +28,12 @@ import {ToolbarModule} from "./shared/component/toolbar/toolbar.module";
         HomeModule,
         LoginModule
     ],
-    providers: [httpInterceptorProviders, AuthGuard, UserService],
+    providers: [
+        httpInterceptorProviders,
+        AuthGuard,
+        UserService,
+        StorageService
+    ],
     bootstrap: [AppComponent]
 })
 export class AppModule {

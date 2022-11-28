@@ -1,1 +1,3 @@
-<p>button-livro-lido works!</p>
+<button mat-button [ngClass]="{ 'selected' : lido }" (click)="processaEvento()">
+    JÁ LI <mat-icon>{{ lido ? 'done' : 'check_box_outline_blank' }}</mat-icon>
+</button>
