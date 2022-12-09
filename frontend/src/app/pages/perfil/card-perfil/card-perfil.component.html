@@ -1,0 +1,18 @@
+<mat-card>
+  <mat-card-content>
+    <mat-icon aria-hidden="false" aria-label="Usuário" fontIcon="account_circle"></mat-icon>
+    <strong>{{ currentUser.info | titlecase }}</strong>
+  </mat-card-content>
+  <mat-card-content>
+    <mat-icon aria-hidden="false" aria-label="Tipo de usuário" fontIcon="business_center"></mat-icon>
+    {{ currentUser.tipo }}
+  </mat-card-content>
+  <mat-card-content>
+    <mat-icon aria-hidden="false" aria-label="Autorizações" fontIcon="account_tree"></mat-icon>
+    <ul>
+      <li *ngFor="let role of currentUser.autorizacoes">
+        {{ role }}
+      </li>
+    </ul>
+  </mat-card-content>
+</mat-card>

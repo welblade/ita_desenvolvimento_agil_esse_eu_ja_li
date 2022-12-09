@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { StorageService  } from '../../_services/storage.service';
+import {UserInfo} from "../../shared/model/user-info.model";
 
 @Component({
   selector: 'app-perfil',
@@ -8,7 +9,7 @@ import { StorageService  } from '../../_services/storage.service';
 })
 export class PerfilComponent implements OnInit {
 
-  currentUser: any;
+  currentUser: UserInfo = new UserInfo();
 
   constructor(private storageService: StorageService) { }
 

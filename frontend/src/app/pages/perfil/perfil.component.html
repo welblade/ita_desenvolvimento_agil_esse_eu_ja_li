@@ -1,25 +1,12 @@
-<div class="container" *ngIf="currentUser; else loggedOut">
-    <header class="jumbotron">
-      <h3>
-        <strong>{{ currentUser.info }}</strong> Profile
-      </h3>
-    </header>
-    <p>
-      <strong>Tipo:</strong>
-      {{ currentUser.tipo }}
-    </p>
-    <strong>Roles:</strong>
-    <ul>
-      <li *ngFor="let role of currentUser.autorizacoes">
-        {{ role }}
-      </li>
-    </ul>
-    <p>
-        <strong>Token:</strong>
-        {{ currentUser.token }}
-      </p>
-  </div>
-  
-  <ng-template #loggedOut>
-    Please login.
-  </ng-template>
+<section *ngIf="currentUser; else loggedOut">
+  <aside>
+    <card-perfil [currentUser]="currentUser"></card-perfil>
+  </aside>
+  <main>
+
+  </main>
+</section>
+
+<ng-template #loggedOut>
+  Please login.
+</ng-template>
