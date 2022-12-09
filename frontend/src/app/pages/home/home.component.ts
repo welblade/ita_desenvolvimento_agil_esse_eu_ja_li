@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { Livro } from '../shared/model/livro.model';
-import { LivrosService } from '../_services/livros.service';
+import { Livro } from '../../shared/model/livro.model';
+import { LivrosService } from '../../_services/livros.service';
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',

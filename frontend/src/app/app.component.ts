@@ -11,8 +11,6 @@ export class AppComponent implements OnInit {
   title = 'jali';
   private roles: string[] = [];
   isLoggedIn = false;
-  showAdminBoard = false;
-  showModeratorBoard = false;
   user: UserInfo = new UserInfo();
 
   constructor(
@@ -25,9 +23,6 @@ export class AppComponent implements OnInit {
     if (this.isLoggedIn) {
       this.user = this.storageService.getUser();
       this.roles = this.user.autorizacoes;
-
-      this.showAdminBoard = this.roles.includes('ADMIN');
-      this.showModeratorBoard = this.roles.includes('USER');
     }
   }
 

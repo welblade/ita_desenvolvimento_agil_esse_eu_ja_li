@@ -5,27 +5,21 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations'
 
 import {AppRoutingModule} from './app-routing.module';
 import {AppComponent} from './app.component';
-import {PerfilComponent} from './perfil/perfil.component';
 import {httpInterceptorProviders} from './_helpers/http.interceptor';
 import {AuthGuard} from './_helpers/auth.guard';
 import {UserService} from './_services/user.service';
-import {HomeModule} from "./home/home.module";
 import {LoginModule} from "./login/login.module";
-import {ToolbarModule} from "./shared/component/toolbar/toolbar.module";
 import {StorageService} from "./_services/storage.service";
 
 @NgModule({
     declarations: [
         AppComponent,
-        PerfilComponent,
     ],
     imports: [
         BrowserModule,
         BrowserAnimationsModule,
         AppRoutingModule,
         HttpClientModule,
-        ToolbarModule,
-        HomeModule,
         LoginModule
     ],
     providers: [

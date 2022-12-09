@@ -1,5 +1,6 @@
 package cap.wesantos.jali.domain.service;
 
+import cap.wesantos.jali.data.model.Usuario;
 import cap.wesantos.jali.rest.controller.dto.HeaderAuthorizationRequestTO;
 import cap.wesantos.jali.rest.controller.dto.PerfilUsuarioResponseTO;
 import cap.wesantos.jali.rest.controller.dto.UsuarioResponseTO;
@@ -14,4 +15,6 @@ public interface UsuarioService {
     PerfilUsuarioResponseTO obterPerfilUsuarioPorId(Long usuarioId);
 
     PerfilUsuarioResponseTO obterPerfilUsuarioPorAutorizacao(HeaderAuthorizationRequestTO authorization);
+
+    Usuario obterUsuarioUsandoAutorizacao(HeaderAuthorizationRequestTO authorization);
 }
