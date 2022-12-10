@@ -5,13 +5,18 @@ import {PerfilRoutingModule} from "./perfil.routing.module";
 import {MatIconModule} from "@angular/material/icon";
 import {MatCardModule} from "@angular/material/card";
 import {CardPerfilComponent} from "./card-perfil/card-perfil.component";
+import {MatListModule} from "@angular/material/list";
+import {ListTrofeuComponent} from "./list-trofeu/list-trofeu.component";
+import {ListaLivrosModule} from "../../shared/component/lista-livros/lista-livros.module";
 @NgModule({
-  declarations: [PerfilComponent, CardPerfilComponent],
+  declarations: [PerfilComponent, CardPerfilComponent, ListTrofeuComponent],
   imports: [
     CommonModule,
     MatIconModule,
     MatCardModule,
-    PerfilRoutingModule
+    MatListModule,
+    PerfilRoutingModule,
+    ListaLivrosModule
   ],
   exports: [PerfilComponent]
 })

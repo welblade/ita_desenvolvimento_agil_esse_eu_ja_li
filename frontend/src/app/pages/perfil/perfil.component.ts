@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { StorageService  } from '../../_services/storage.service';
-import {UserInfo} from "../../shared/model/user-info.model";
+import {UserService} from "../../_services/user.service";
+import {PerfilUsuario} from "../../shared/model/perfil-usuario.model";
+import {take} from "rxjs";
 
 @Component({
   selector: 'app-perfil',
@@ -8,13 +9,21 @@ import {UserInfo} from "../../shared/model/user-info.model";
   styleUrls: ['./perfil.component.css']
 })
 export class PerfilComponent implements OnInit {
+  isLogged = false;
+  perfilUsuario!: PerfilUsuario;
 
-  currentUser: UserInfo = new UserInfo();
-
-  constructor(private storageService: StorageService) { }
+  constructor(private userService: UserService) { }
 
   ngOnInit(): void {
-    this.currentUser = this.storageService.getUser();
+    this.userService.obterMeuPerfil()
+      .pipe(take<PerfilUsuario>(1))
+      .subscribe({
+        next: perfil => {
+          this.perfilUsuario = perfil;
+          this.isLogged = true;
+        },
+        error: error => console.error(error)
+      });
   }
 
 

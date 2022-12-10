@@ -39,10 +39,10 @@ public class Usuario {
     @Column
     private Long pontos = 0L;
 
-    @OneToMany(mappedBy = "usuario", cascade = {REFRESH, REMOVE, MERGE}, orphanRemoval = true)
+    @OneToMany(mappedBy = "usuario", fetch=FetchType.EAGER, cascade = {REFRESH, REMOVE, MERGE}, orphanRemoval = true)
     private Set<LivroLido> livros = new HashSet<>();
 
-    @OneToMany(mappedBy = "usuario", cascade = {REFRESH, REMOVE, MERGE}, orphanRemoval = true)
+    @OneToMany(mappedBy = "usuario", fetch=FetchType.EAGER, cascade = {REFRESH, REMOVE, MERGE}, orphanRemoval = true)
     private Set<Trofeu> trofeus = new HashSet<>();
 
 

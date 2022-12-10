@@ -2,13 +2,14 @@ import {Component, Input, OnInit} from '@angular/core';
 import {PerfilUsuario} from "../../../shared/model/perfil-usuario.model";
 
 @Component({
-  selector: 'card-perfil',
-  templateUrl: './card-perfil.component.html',
-  styleUrls: ['./card-perfil.component.css']
+  selector: 'list-trofeu',
+  templateUrl: './list-trofeu.component.html',
+  styleUrls: ['./list-trofeu.component.css']
 })
-export class CardPerfilComponent implements OnInit {
+export class ListTrofeuComponent implements OnInit {
   @Input() perfilUsuario!: PerfilUsuario;
-  constructor() { }
+  constructor() {
+  }
 
   ngOnInit(): void {
   }

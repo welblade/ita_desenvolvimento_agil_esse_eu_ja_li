@@ -1,9 +1,11 @@
-<section *ngIf="currentUser; else loggedOut">
+<h2>Perfil</h2>
+<section *ngIf="isLogged; else loggedOut">
   <aside>
-    <card-perfil [currentUser]="currentUser"></card-perfil>
+    <card-perfil [perfilUsuario]="perfilUsuario"></card-perfil>
+    <list-trofeu [perfilUsuario]="perfilUsuario"></list-trofeu>
   </aside>
   <main>
-
+    <lista-livros [livros]="perfilUsuario.livros" [cols]="2"></lista-livros>
   </main>
 </section>
 

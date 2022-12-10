@@ -1,4 +1,27 @@
-section {
+root {
   width: 100%;
-  display: flex;
 }
+h2 {
+  text-align: center;
+}
+section {
+  display: flex;
+  margin-top: 16px;
+  width: 90vw;
+}
+section aside {
+  flex-grow: 0;
+  margin-right: 16px;
+  display: flex;
+  flex-direction: column;
+}
+
+section main {
+  flex-grow: 2;
+}
+
+card-perfil {
+  margin-bottom: 16px;
+}
+
+

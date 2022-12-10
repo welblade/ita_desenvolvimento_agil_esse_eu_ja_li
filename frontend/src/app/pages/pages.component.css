@@ -4,3 +4,6 @@ main {
   justify-content: center;
   align-items: center;
 }
+main section {
+  width: fit-content;
+}
