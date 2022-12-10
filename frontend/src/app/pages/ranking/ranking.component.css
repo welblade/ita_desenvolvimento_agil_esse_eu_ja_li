@@ -1,0 +1,25 @@
+section {
+  width: 72vw;
+}
+h2 {
+  text-align: center;
+  margin: 16px auto;
+}
+mat-list-item .mat-line:nth-child(n+2) {
+  color: #777;
+  font-size: 0.88em;
+}
+mat-list-item mat-icon {
+  color: green;
+}
+mat-list-item:nth-child(1) mat-icon {
+  color: darkgoldenrod;
+}
+mat-list-item:nth-child(2) mat-icon {
+  color: grey;
+}
+mat-list-item:nth-child(3) mat-icon {
+  color: saddlebrown;
+}
+
+

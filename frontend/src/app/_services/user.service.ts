@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import {Observable} from "rxjs";
 import {PerfilUsuario} from "../shared/model/perfil-usuario.model";
+import {Usuario} from "../shared/model/usuario.model";
 
 const API_URL = 'http://localhost:8080/api/usuarios';
 
@@ -22,6 +23,10 @@ export class UserService {
 
   obterMeuPerfil(): Observable<PerfilUsuario> {
     return this.http.get<PerfilUsuario>(`${API_URL}/perfil`, { responseType: 'json' });
+  }
+
+  obterRanking(): Observable<Usuario[]> {
+    return this.http.get<Usuario[]>(`${API_URL}/ranking`, { responseType: 'json' });
   }
 
 }

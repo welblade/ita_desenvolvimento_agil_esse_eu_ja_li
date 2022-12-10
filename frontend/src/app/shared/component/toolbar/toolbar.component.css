@@ -13,6 +13,12 @@ mat-toolbar a {
   color: black;
   text-decoration: none;
 }
+
+mat-nav-list {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 .toolbar__container {
     width: inherit;
     display: flex;

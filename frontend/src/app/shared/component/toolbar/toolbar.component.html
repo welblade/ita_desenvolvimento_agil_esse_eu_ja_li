@@ -1,9 +1,12 @@
 <mat-toolbar>
   <a mat-list-item [routerLink]="['home']" >
-     <h3> <mat-icon>menu_book</mat-icon> ESSE EU JÁ LI!</h3>
+     <h3> <mat-icon>auto_stories</mat-icon> ESSE EU JÁ LI!</h3>
   </a>
   <div class="toolbar__container"></div>
   <mat-nav-list>
+      <a mat-list-item [routerLink]="['ranking']" >
+        Ranking
+      </a>
       <a mat-list-item  [matMenuTriggerFor]="menu">{{ usuario.info }}</a>
       <mat-menu #menu="matMenu">
         <a mat-menu-item [routerLink]="['perfil']">Perfil</a>

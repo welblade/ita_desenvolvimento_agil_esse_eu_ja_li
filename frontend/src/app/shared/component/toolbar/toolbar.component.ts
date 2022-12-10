@@ -1,6 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { Router } from '@angular/router';
-import { UserInfo } from '../../model/user-info.model';
+import { LoginInfo } from '../../model/login-info.model';
 import { StorageService } from '../../../_services/storage.service';
 
 @Component({
@@ -10,7 +10,7 @@ import { StorageService } from '../../../_services/storage.service';
 })
 export class ToolbarComponent {
 
-  @Input() usuario: UserInfo = new UserInfo();
+  @Input() usuario: LoginInfo = new LoginInfo();
 
   constructor(private storageService: StorageService, private router: Router) { }
 

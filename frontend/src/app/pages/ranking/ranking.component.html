@@ -1,0 +1,12 @@
+<section>
+  <h2>Ranking</h2>
+  <mat-list>
+
+    <mat-list-item *ngFor="let usuario of ranking | async">
+      <mat-icon mat-list-icon>workspace_premium</mat-icon>
+      <div mat-line>{{ usuario.nome }}</div>
+      <div mat-line>{{ usuario.pontos }} pontos</div>
+    </mat-list-item>
+
+  </mat-list>
+</section>

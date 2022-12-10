@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { UserInfo } from '../shared/model/user-info.model';
+import { LoginInfo } from '../shared/model/login-info.model';
 
 const USER_KEY = 'auth-user';
 
@@ -12,26 +12,23 @@ export class StorageService {
     window.sessionStorage.clear();
   }
 
-  public saveUser(user: UserInfo): void {
+  public saveUser(user: LoginInfo): void {
     window.sessionStorage.removeItem(USER_KEY);
     window.sessionStorage.setItem(USER_KEY, JSON.stringify(user));
   }
 
-  public getUser(): UserInfo {
+  public getUser(): LoginInfo {
     const user = window.sessionStorage.getItem(USER_KEY);
     if (user) {
-      return JSON.parse(user) as UserInfo;
+      return JSON.parse(user) as LoginInfo;
     }
 
-    return new UserInfo();
+    return new LoginInfo();
   }
 
   public isLoggedIn(): boolean {
     let value = window.sessionStorage.getItem(USER_KEY)!;
-    const user: UserInfo = JSON.parse(value) as UserInfo;
-    if (user) {
-      return true;
-    }
-    return false;
+    const user: LoginInfo = JSON.parse(value) as LoginInfo;
+    return !!user;
   }
 }

@@ -18,6 +18,12 @@ const routes: Routes = [
         canActivate: [AuthGuard],
         pathMatch: 'full'
       },
+      {
+        path: 'ranking',
+        loadChildren: () => import('./ranking/ranking.module').then(m => m.RankingModule),
+        canActivate: [AuthGuard],
+        pathMatch: 'full'
+      },
       { path: '', redirectTo: 'home', pathMatch: 'full' },
     ]
   },

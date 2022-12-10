@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import { StorageService } from './_services/storage.service';
-import { UserInfo } from './shared/model/user-info.model';
+import { LoginInfo } from './shared/model/login-info.model';
 
 @Component({
   selector: 'app-root',
@@ -9,9 +9,8 @@ import { UserInfo } from './shared/model/user-info.model';
 })
 export class AppComponent implements OnInit {
   title = 'jali';
-  private roles: string[] = [];
   isLoggedIn = false;
-  user: UserInfo = new UserInfo();
+  user: LoginInfo = new LoginInfo();
 
   constructor(
     private storageService: StorageService,
@@ -22,7 +21,6 @@ export class AppComponent implements OnInit {
 
     if (this.isLoggedIn) {
       this.user = this.storageService.getUser();
-      this.roles = this.user.autorizacoes;
     }
   }
 

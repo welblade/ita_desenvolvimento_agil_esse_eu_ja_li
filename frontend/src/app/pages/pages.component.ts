@@ -1,5 +1,5 @@
-import {Component, Input, OnInit} from '@angular/core';
-import {UserInfo} from "../shared/model/user-info.model";
+import {Component, OnInit} from '@angular/core';
+import {LoginInfo} from "../shared/model/login-info.model";
 import {StorageService} from "../_services/storage.service";
 
 @Component({
@@ -8,7 +8,7 @@ import {StorageService} from "../_services/storage.service";
   styleUrls: ['./pages.component.css']
 })
 export class PagesComponent implements OnInit {
-  user: UserInfo = new UserInfo();
+  user: LoginInfo = new LoginInfo();
   roles: string[] = [];
   constructor(private storageService: StorageService) { }
 
