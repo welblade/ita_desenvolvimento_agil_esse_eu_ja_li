@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import {AuthGuard} from "../_helpers/auth.guard";
 import {PagesComponent} from "./pages.component";
+import {LivroResolverGuard} from "./shared/guard/livro-resolver-guard.service";
 
 const routes: Routes = [
   { path: '', component: PagesComponent ,
@@ -22,6 +23,13 @@ const routes: Routes = [
         path: 'ranking',
         loadChildren: () => import('./ranking/ranking.module').then(m => m.RankingModule),
         canActivate: [AuthGuard],
+        pathMatch: 'full'
+      },
+      {
+        path: 'livros/:id',
+        loadChildren: () => import('./livro-detalhes/livro-detalhes.module').then(m => m.LivroDetalhesModule),
+        canActivate: [AuthGuard],
+        resolve: { livro: LivroResolverGuard },
         pathMatch: 'full'
       },
       { path: '', redirectTo: 'home', pathMatch: 'full' },

@@ -1,0 +1,8 @@
+section {
+  display: flex;
+}
+section img {
+  height: 278px;
+  width: auto;
+  margin-right: 16px;
+}

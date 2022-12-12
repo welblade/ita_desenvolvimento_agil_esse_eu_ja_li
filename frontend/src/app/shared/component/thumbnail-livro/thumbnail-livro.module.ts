@@ -6,15 +6,17 @@ import {MatIconModule} from "@angular/material/icon";
 
 import {ButtonLivroLidoComponent} from "./button-livro-lido/button-livro-lido.component";
 import {ThumbnailLivroComponent} from "./thumbnail-livro.component";
+import { RouterModule} from "@angular/router";
 
 @NgModule({
     declarations: [ThumbnailLivroComponent, ButtonLivroLidoComponent],
-    imports: [
-        CommonModule,
-        MatCardModule,
-        MatButtonModule,
-        MatIconModule
-    ],
+  imports: [
+    CommonModule,
+    MatCardModule,
+    MatButtonModule,
+    MatIconModule,
+    RouterModule
+  ],
     exports: [ThumbnailLivroComponent, ButtonLivroLidoComponent]
 })
 export class ThumbnailLivroModule {

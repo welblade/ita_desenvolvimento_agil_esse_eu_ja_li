@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Livro } from '../shared/model/livro.model';
 
-const API_URL = 'http://localhost:8080/api/livros';
+const API_URL = 'http://localhost:8080/api/livros/';
 
 @Injectable({
   providedIn: 'root'
@@ -16,7 +16,7 @@ export class LivrosService {
     return this.http.get<Livro[]>(API_URL, { responseType: 'json' });
   }
 
-  getDetalhes(id : number): Observable<any> {
-    return this.http.get(API_URL + id, { responseType: 'text' });
+  getDetalhes(id : number): Observable<Livro> {
+    return this.http.get<Livro>(API_URL + id, { responseType: 'json' });
   }
 }

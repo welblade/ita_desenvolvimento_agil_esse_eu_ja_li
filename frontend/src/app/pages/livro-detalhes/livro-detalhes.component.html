@@ -1,0 +1,14 @@
+<main>
+  <header>
+    <h2>{{ livro.nome }}</h2>
+  </header>
+  <section>
+    <img src="https://placeimg.com/333/500/arch/sepia" alt="" />
+    <article>
+      <h3>{{ livro.nome }}</h3>
+      <h4>{{ livro.categoria }}</h4>
+      <p>{{ livro.paginas }} páginas</p>
+      <button-livro-lido [lido]="livro.lido" (clickJaLido)="emitirJaLidoButtonEvent($event)"></button-livro-lido>
+    </article>
+  </section>
+</main>
